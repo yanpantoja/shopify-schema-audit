@@ -57,3 +57,35 @@
 **Cause:** Content injected inside `metafield-rich_text_field` wrapper inherits its styles.
 
 **Fix:** Use tag-qualified selectors (`p.your-class`) to match or beat the existing specificity.
+
+## Duplicate schema from SEO apps conflicting with theme schema
+
+**Symptom:** Google Search Console shows duplicate `Product` or `Organization` entries. Rich results flicker or disappear.
+
+**Cause:** Third-party apps (SEOManager, SchemaApp, JSON-LD for SEO, Smart SEO) inject their own JSON-LD that overlaps with the theme's schema. Common in projects like ThirdLove where SEOManager generates 447 lines of schema alongside manual theme schema.
+
+**Fix:** Choose one source of truth — either the app OR the theme. If keeping the app, remove the theme's JSON-LD for the same types. If keeping the theme, disable the app's schema output for those types.
+
+## Relying solely on Shopify's native `structured_data` filter
+
+**Symptom:** Product pages have basic schema but no AggregateRating, FAQPage, or custom fields. Schema is minimal.
+
+**Cause:** Using `{{ product | structured_data }}` — Shopify's built-in filter that generates basic JSON-LD automatically but with no customization.
+
+**Fix:** Replace with custom JSON-LD that includes AggregateRating, variant details, GTIN, and any metafield data relevant to the product.
+
+## Price formatted as currency string instead of number
+
+**Symptom:** Google Search Console error: "price field value is invalid."
+
+**Cause:** Using `| money` or `| money_with_currency` filter inside JSON-LD, outputting `"$9.95"` instead of `9.95`.
+
+**Fix:** Use raw price divided by 100: `{{ variant.price | divided_by: 100.0 }}` or use `| money_without_currency | strip_html` and ensure no currency symbol.
+
+## Microdata and JSON-LD mixed for the same schema type
+
+**Symptom:** Google shows unexpected rich results or ignores schema entirely.
+
+**Cause:** Product page has both `itemscope itemtype="schema.org/Product"` attributes in HTML AND a separate JSON-LD `@type: "Product"` block. Google recommends using one format per type.
+
+**Fix:** Pick one format (JSON-LD recommended) and remove the other. If microdata is embedded in the template HTML and hard to remove, at minimum ensure both outputs are consistent.

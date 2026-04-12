@@ -62,7 +62,7 @@ The skill uses **progressive disclosure** - SKILL.md is the overview, and refere
 
 ## Common Mistakes it catches
 
-Based on real bugs encountered in production Shopify themes:
+Based on real bugs encountered across multiple production Shopify themes:
 
 - Okendo/review app metafield `contains` returning false (needs `{% capture %}` first)
 - Richtext metafields outputting raw JSON in schema (use `| metafield_text` filter)
@@ -70,6 +70,10 @@ Based on real bugs encountered in production Shopify themes:
 - String comparison on numeric review values (normalize with `| plus: 0`)
 - Organization `sameAs` with empty strings (use `shop.brand.metafields.social_links`)
 - Wrong metafield keys (e.g., `custom.lrv` vs `custom.light_reflectance_value`)
+- Duplicate schema from SEO apps (SEOManager, SchemaApp) conflicting with theme schema
+- Relying solely on Shopify's native `{{ product | structured_data }}` filter (limited output)
+- Price formatted as currency string (`"$9.95"`) instead of number (`9.95`)
+- Microdata and JSON-LD mixed for the same schema type on one page
 
 ## Compatibility
 

@@ -14,6 +14,14 @@
 | 8 | `url` includes variant parameter (`?variant=ID`) | Check for `variant.id` in URL | Minor |
 | 9 | Currency uses `cart.currency.iso_code` (not hardcoded) | Grep for currency source | Major |
 
+## 2A-ext. Additional Product Checks (from cross-project analysis)
+
+| # | Check | How to verify | Severity |
+|---|---|---|---|
+| 9a | `image` field is present and not empty | Check for product image in schema output | Critical |
+| 9b | GTIN uses correct property based on barcode length | 12 chars → `gtin12`, 13 → `gtin13`, 14 → `gtin14`, or use generic `gtin` | Minor |
+| 9c | Price value is numeric (not string-wrapped by `money` filter) | `"price": 9.95` not `"price": "$9.95"` — use raw price divided by 100 or `| times: 1` | Major |
+
 ## Scoring
 
 - Weight: /30

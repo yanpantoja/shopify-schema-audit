@@ -63,6 +63,7 @@ For each JSON-LD block found in Phase 1, run the relevant checks:
 - **FAQPage** (checks 14-18): See [references/faq-checks.md](references/faq-checks.md)
 - **Organization & BreadcrumbList** (checks 19-23): See [references/organization-checks.md](references/organization-checks.md)
 - **Global checks for all blocks** (checks 24-29): See [references/global-checks.md](references/global-checks.md)
+- **Conflict detection** (checks 29a-29c): Also in [references/global-checks.md](references/global-checks.md) — checks for duplicate schema from SEO apps, microdata/JSON-LD mixing, and native `structured_data` filter reliance
 
 Only load the reference files relevant to schemas found in Phase 1.
 
