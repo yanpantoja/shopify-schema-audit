@@ -27,6 +27,28 @@ After installing, the skill activates automatically when you work on a Shopify L
 - **Schema check** (during dev): "Check the JSON-LD schema I just added"
 - **Pre-deploy gate** (before PR): "Validate structured data before I open a PR"
 
+## Structure
+
+```
+shopify-agentic-audit/
+├── SKILL.md                              # Main workflow (lean overview)
+├── references/
+│   ├── product-schema-checks.md          # Product/ProductGroup checks (1-9)
+│   ├── rating-checks.md                  # AggregateRating checks (10-13)
+│   ├── faq-checks.md                     # FAQPage checks (14-18)
+│   ├── organization-checks.md            # Organization + BreadcrumbList checks (19-23)
+│   ├── global-checks.md                  # Global checks for all schema blocks (24-29)
+│   ├── storefront-readiness.md           # Agentic storefront config checks (30-38)
+│   └── common-mistakes.md               # Edge cases from real projects
+├── templates/
+│   └── report-template.md               # Output report template
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+The skill uses **progressive disclosure** - SKILL.md is the overview, and reference files are loaded only when needed for the specific checks being run.
+
 ## What it checks
 
 | Category | Checks | Weight |
@@ -53,12 +75,7 @@ Based on real bugs encountered in production Shopify themes:
 
 Works with any AI coding tool that supports the [agent skills](https://github.com/vercel-labs/skills) standard:
 
-- Claude Code
-- Cursor
-- OpenAI Codex
-- GitHub Copilot
-- Gemini CLI
-- Windsurf, Cline, and others
+Claude Code, Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, Windsurf, Cline, and others.
 
 ## License
 
