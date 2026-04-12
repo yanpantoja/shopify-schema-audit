@@ -13,6 +13,14 @@ These apply to ALL JSON-LD blocks in the theme.
 | 28 | Date fields use `| date` filter (not raw `created_at` output) | Check Article/Blog date fields in schema | Major |
 | 29 | Variant selection dynamically updates schema (or ProductGroup covers all) | Check for JS-driven schema updates or ProductGroup pattern | Minor |
 
+## 2F-ext. Additional Global Checks
+
+| # | Check | How to verify | Severity |
+|---|---|---|---|
+| 29d | `<script type="application/ld+json">` has no extra attributes (`async`, `defer`, `class`) | Grep for `ld+json` and check for extra attributes on the tag | Minor |
+| 29e | `priceValidUntil` is not arbitrarily hardcoded (e.g., "+365 days from now") | Check if tied to actual offer/stock data, not `"today" \| date: '%s' \| plus: 31536000` | Minor |
+| 29f | `@id` URLs are properly constructed (no double domain concatenation) | Check for patterns like `shop.url + routes.root_url` that may produce `https://store.com/https://...` | Major |
+
 ## 2G. Conflict Detection (cross-source schema issues)
 
 | # | Check | How to verify | Severity |

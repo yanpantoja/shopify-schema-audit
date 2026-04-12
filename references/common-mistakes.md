@@ -82,6 +82,22 @@
 
 **Fix:** Use raw price divided by 100: `{{ variant.price | divided_by: 100.0 }}` or use `| money_without_currency | strip_html` and ensure no currency symbol.
 
+## Person/Organization schema with hardcoded URL
+
+**Symptom:** Person schema `url` points to homepage (`https://store.com/`) instead of the actual profile page.
+
+**Cause:** URL field hardcoded to `shop.url` instead of the current page URL.
+
+**Fix:** Use `{{ canonical_url }}` or `{{ request.origin }}{{ request.path }}` for the current page URL.
+
+## BreadcrumbList schema disabled by default via section setting
+
+**Symptom:** BreadcrumbList code exists in the theme but never renders.
+
+**Cause:** The section has an `output_schema` boolean setting defaulting to `false`. Easy to miss during audits because the code looks complete.
+
+**Fix:** Enable in theme editor or change default to `true` in the section's schema settings block.
+
 ## Microdata and JSON-LD mixed for the same schema type
 
 **Symptom:** Google shows unexpected rich results or ignores schema entirely.
