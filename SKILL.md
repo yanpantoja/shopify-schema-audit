@@ -14,17 +14,19 @@ tags:
 
 # Shopify Agentic Commerce Readiness Audit
 
-Structured audit workflow for Shopify Liquid themes. Validates JSON-LD structured data, product metadata, and store configuration for AI agent discovery (ChatGPT, Google AI Mode, Perplexity, Microsoft Copilot).
+Structured audit workflow for **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0 themes, etc.). Validates JSON-LD structured data, product metadata, and store configuration for AI agent discovery (ChatGPT, Google AI Mode, Perplexity, Microsoft Copilot).
 
 ## When to Use
 
-- Before deploying a Shopify theme to production
-- After implementing or modifying JSON-LD schema in a theme
-- When onboarding a new Shopify project
+- Before deploying a Shopify Liquid theme to production
+- After implementing or modifying JSON-LD schema in `.liquid` files
+- When onboarding a new Shopify theme project
 - During periodic SEO/structured data reviews
 - When `shopify theme check` passes but structured data hasn't been validated
 
-**Not for:** Hydrogen/headless projects (use Storefront MCP), or product data-only audits (use FoundGPT or AgentReady apps).
+**Scope:** Shopify Liquid themes only — the audit greps `.liquid` files, checks Liquid filters (`| json`, `| metafield_tag`, `| strip_html`), and validates Liquid objects (`shop.brand`, `cart.currency`, `variant.barcode`).
+
+**Not for:** Headless projects (Hydrogen, Next.js, Nuxt — these don't use Liquid), Shopify app development, or product data-only audits (use FoundGPT or AgentReady apps for that).
 
 ## Audit Modes
 

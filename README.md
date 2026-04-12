@@ -1,8 +1,10 @@
 # shopify-agentic-audit
 
-Audit Shopify Liquid themes for AI agent discovery readiness (Agentic Storefronts, ChatGPT, Google AI Mode, Perplexity, Microsoft Copilot).
+Audit **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0, etc.) for AI agent discovery readiness (Agentic Storefronts, ChatGPT, Google AI Mode, Perplexity, Microsoft Copilot).
 
 An [agent skill](https://github.com/vercel-labs/skills) for Claude Code, Cursor, Codex, and other AI coding tools.
+
+> **Scope:** Liquid themes only. Not for headless projects (Hydrogen, Next.js, Nuxt) or Shopify apps.
 
 ## What it does
 
