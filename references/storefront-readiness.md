@@ -1,6 +1,6 @@
-# Agentic Storefront Readiness Checks
+# Store Readiness Checks
 
-These go beyond schema markup — they verify store-level configuration for AI agent discovery.
+These go beyond schema markup — they verify store-level configuration that affects structured data quality and search visibility.
 
 ## 3A. Verifiable from code
 

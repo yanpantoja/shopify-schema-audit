@@ -1,20 +1,20 @@
 ---
-name: shopify-agentic-audit
-description: Use when auditing a Shopify Liquid theme for AI agent discovery readiness - checks JSON-LD schema completeness, product structured data, metafield exposure, and agentic storefront requirements. Triggers on Shopify theme projects, SEO audits, agentic commerce preparation, schema markup review, or pre-deployment validation.
-version: 1.0.0
+name: shopify-schema-audit
+description: Use when auditing a Shopify Liquid theme for structured data quality - checks JSON-LD schema completeness, product structured data, metafield exposure, and store configuration. Triggers on Shopify theme projects, SEO audits, schema markup review, or pre-deployment validation.
+version: 1.1.0
 author: Yan Pantoja
 tags:
   - shopify
   - seo
   - structured-data
-  - agentic-commerce
   - json-ld
   - schema-markup
+  - rich-results
 ---
 
-# Shopify Agentic Commerce Readiness Audit
+# Shopify Schema Audit
 
-Structured audit workflow for **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0 themes, etc.). Validates JSON-LD structured data, product metadata, and store configuration for AI agent discovery (ChatGPT, Google AI Mode, Perplexity, Microsoft Copilot).
+Structured audit workflow for **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0 themes, etc.). Validates JSON-LD structured data, product metadata, and store configuration for SEO rich results and AI search visibility.
 
 ## When to Use
 
@@ -69,15 +69,15 @@ For each JSON-LD block found in Phase 1, run the relevant checks:
 
 Only load the reference files relevant to schemas found in Phase 1.
 
-## Phase 3: Agentic Storefront Readiness
+## Phase 3: Store Readiness
 
-Checks 30-38 verify store-level configuration for AI agent discovery. Some checks require admin access and should be flagged as "VERIFY MANUALLY" in the report.
+Checks 30-38 verify store-level configuration that affects structured data quality and search visibility. Some checks require admin access and should be flagged as "VERIFY MANUALLY" in the report.
 
 See [references/storefront-readiness.md](references/storefront-readiness.md)
 
 ## Phase 4: Report Generation
 
-Generate `AGENTIC_READINESS_REPORT.md` using the template in [templates/report-template.md](templates/report-template.md).
+Generate `SCHEMA_AUDIT_REPORT.md` using the template in [templates/report-template.md](templates/report-template.md).
 
 **Scoring guide:**
 - Critical issue: -10 points from category

@@ -1,4 +1,4 @@
-# Agentic Readiness Report
+# Schema Audit Report
 
 **Project:** [theme name]
 **Date:** [date]
@@ -16,7 +16,7 @@
 | FAQ Schema | /15 | [count] |
 | Organization & Site | /10 | [count] |
 | Breadcrumbs & Navigation | /10 | [count] |
-| Agentic Storefront Config | /20 | [count] |
+| Store Config | /20 | [count] |
 
 ### Critical Issues (fix before deploy)
 

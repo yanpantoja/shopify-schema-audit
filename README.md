@@ -1,6 +1,6 @@
-# shopify-agentic-audit
+# shopify-schema-audit
 
-Audit **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0, etc.) for AI agent discovery readiness (Agentic Storefronts, ChatGPT, Google AI Mode, Perplexity, Microsoft Copilot).
+Audit **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0, etc.) for structured data (JSON-LD) quality — Product, AggregateRating, Organization, FAQ, BreadcrumbList, and conflict detection.
 
 An [agent skill](https://github.com/vercel-labs/skills) for Claude Code, Cursor, Codex, and other AI coding tools.
 
@@ -12,27 +12,27 @@ Runs a structured 4-phase audit on your Shopify theme codebase:
 
 1. **Discovery** - Finds all JSON-LD structured data implementations
 2. **Schema Validation** - Checks 29 items across Product, AggregateRating, FAQPage, Organization, BreadcrumbList, and global patterns
-3. **Agentic Storefront Readiness** - Validates store config for AI agent discovery
-4. **Report Generation** - Outputs an `AGENTIC_READINESS_REPORT.md` with score (0-100), issues by severity, and fix suggestions
+3. **Store Readiness** - Validates store-level config that affects structured data quality
+4. **Report Generation** - Outputs a `SCHEMA_AUDIT_REPORT.md` with score (0-100), issues by severity, and fix suggestions
 
 ## Install
 
 ```bash
-npx skills add yanpantoja/shopify-agentic-audit
+npx skills add yanpantoja/shopify-schema-audit
 ```
 
 ## Usage
 
 After installing, the skill activates automatically when you work on a Shopify Liquid theme project. You can also invoke it directly:
 
-- **Full audit** (new project): "Run a full agentic readiness audit on this theme"
+- **Full audit** (new project): "Run a full schema audit on this theme"
 - **Schema check** (during dev): "Check the JSON-LD schema I just added"
 - **Pre-deploy gate** (before PR): "Validate structured data before I open a PR"
 
 ## Structure
 
 ```
-shopify-agentic-audit/
+shopify-schema-audit/
 ├── SKILL.md                              # Main workflow (lean overview)
 ├── references/
 │   ├── product-schema-checks.md          # Product/ProductGroup checks (1-9)
@@ -40,7 +40,7 @@ shopify-agentic-audit/
 │   ├── faq-checks.md                     # FAQPage checks (14-18)
 │   ├── organization-checks.md            # Organization + BreadcrumbList checks (19-23)
 │   ├── global-checks.md                  # Global checks for all schema blocks (24-29)
-│   ├── storefront-readiness.md           # Agentic storefront config checks (30-38)
+│   ├── storefront-readiness.md           # Store-level config checks (30-38)
 │   └── common-mistakes.md               # Edge cases from real projects
 ├── templates/
 │   └── report-template.md               # Output report template
@@ -60,7 +60,7 @@ The skill uses **progressive disclosure** - SKILL.md is the overview, and refere
 | FAQPage | Structure, richtext handling, JSON comma logic | /15 |
 | Organization & Site | Logo source, sameAs social links, WebSite + SearchAction | /10 |
 | BreadcrumbList | Template coverage, position sequencing | /10 |
-| Agentic Storefront Config | Policies, GTIN exposure, taxonomy, guest checkout | /20 |
+| Store Config | Policies, GTIN exposure, taxonomy, guest checkout | /20 |
 
 ## Common Mistakes it catches
 
