@@ -59,16 +59,6 @@ Items that cannot be confirmed from theme code alone:
 | Person | ? | author pages | ? |
 | Offer | ? | inside Product/ProductGroup | ? |
 
-### Open Graph Meta Tag Coverage
-
-| Tag | Present on PDP | Present on Article | Present on Homepage | Status |
-|---|---|---|---|---|
-| og:title | ? | ? | ? | ? |
-| og:description | ? | ? | ? | ? |
-| og:image | ? | ? | ? | ? |
-| og:url | ? | ? | ? | ? |
-| og:type | ? | ? | ? | ? |
-
 ### What's Working Well
 
 [list of correctly implemented schemas]
