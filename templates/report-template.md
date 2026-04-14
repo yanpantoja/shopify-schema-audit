@@ -16,6 +16,8 @@
 | FAQ Schema | /15 | [count] |
 | Organization & Site | /10 | [count] |
 | Breadcrumbs & Navigation | /10 | [count] |
+| Returns & Policy (MerchantReturnPolicy) | /10 | [count] |
+| Open Graph Meta Tags | /10 | [count] |
 | Store Config | /20 | [count] |
 
 ### Critical Issues (fix before deploy)
@@ -50,11 +52,22 @@ Items that cannot be confirmed from theme code alone:
 | Organization | ? | homepage, author pages | ? |
 | WebSite + SearchAction | ? | homepage | ? |
 | BreadcrumbList | ? | all templates | ? |
+| MerchantReturnPolicy | ? | product template (inside Offer) or global | ? |
 | CollectionPage + ItemList | ? | collection template | ? |
 | Article | ? | blog article template | ? |
 | Blog | ? | blog index template | ? |
 | Person | ? | author pages | ? |
 | Offer | ? | inside Product/ProductGroup | ? |
+
+### Open Graph Meta Tag Coverage
+
+| Tag | Present on PDP | Present on Article | Present on Homepage | Status |
+|---|---|---|---|---|
+| og:title | ? | ? | ? | ? |
+| og:description | ? | ? | ? | ? |
+| og:image | ? | ? | ? | ? |
+| og:url | ? | ? | ? | ? |
+| og:type | ? | ? | ? | ? |
 
 ### What's Working Well
 

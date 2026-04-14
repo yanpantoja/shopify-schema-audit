@@ -1,6 +1,6 @@
 # shopify-schema-audit
 
-Audit **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0, etc.) for structured data (JSON-LD) quality — Product, AggregateRating, Organization, FAQ, BreadcrumbList, and conflict detection.
+Audit **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0, etc.) for structured data (JSON-LD) quality — Product, AggregateRating, Organization, FAQ, BreadcrumbList, MerchantReturnPolicy, Open Graph meta tags, and conflict detection.
 
 An [agent skill](https://github.com/vercel-labs/skills) for Claude Code, Cursor, Codex, and other AI coding tools.
 
@@ -11,8 +11,8 @@ An [agent skill](https://github.com/vercel-labs/skills) for Claude Code, Cursor,
 Runs a structured 4-phase audit on your Shopify theme codebase:
 
 1. **Discovery** - Finds all JSON-LD structured data implementations
-2. **Schema Validation** - Checks 29 items across Product, AggregateRating, FAQPage, Organization, BreadcrumbList, and global patterns
-3. **Store Readiness** - Validates store-level config that affects structured data quality
+2. **Schema & Meta Validation** - Checks 44 items across Product, AggregateRating, FAQPage, Organization, BreadcrumbList, MerchantReturnPolicy, global JSON-LD patterns, and Open Graph meta tags
+3. **Store Readiness** - Validates store-level config that affects structured data quality (9 checks)
 4. **Report Generation** - Outputs a `SCHEMA_AUDIT_REPORT.md` with score (0-100), issues by severity, and fix suggestions
 
 ## Install
@@ -38,12 +38,14 @@ shopify-schema-audit/
 │   ├── product-schema-checks.md          # Product/ProductGroup checks (1-9)
 │   ├── rating-checks.md                  # AggregateRating checks (10-13)
 │   ├── faq-checks.md                     # FAQPage checks (14-18)
-│   ├── organization-checks.md            # Organization + BreadcrumbList checks (19-23)
-│   ├── global-checks.md                  # Global checks for all schema blocks (24-29)
+│   ├── organization-checks.md            # Organization + BreadcrumbList checks (19-23c)
+│   ├── returns-checks.md                 # MerchantReturnPolicy checks (39-42)
+│   ├── global-checks.md                  # Global checks for all schema blocks (24-29, 29a-29c)
+│   ├── open-graph-checks.md              # Open Graph meta tag checks (43-47)
 │   ├── storefront-readiness.md           # Store-level config checks (30-38)
-│   └── common-mistakes.md               # Edge cases from real projects
+│   └── common-mistakes.md                # Edge cases from real projects
 ├── templates/
-│   └── report-template.md               # Output report template
+│   └── report-template.md                # Output report template
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -59,7 +61,9 @@ The skill uses **progressive disclosure** - SKILL.md is the overview, and refere
 | AggregateRating | Review app integration, numeric gating, metafield coercion | /15 |
 | FAQPage | Structure, richtext handling, JSON comma logic | /15 |
 | Organization & Site | Logo source, sameAs social links, WebSite + SearchAction | /10 |
-| BreadcrumbList | Template coverage, position sequencing | /10 |
+| BreadcrumbList | Template coverage, hierarchy, fallback logic, absolute URLs | /10 |
+| MerchantReturnPolicy | Schema presence, return days, valid category URLs, country targeting | /10 |
+| Open Graph meta tags | og:title, og:description, og:image, og:url, og:type per template | /10 |
 | Store Config | Policies, GTIN exposure, taxonomy, guest checkout | /20 |
 
 ## Common Mistakes it catches

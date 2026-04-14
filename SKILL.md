@@ -1,7 +1,7 @@
 ---
 name: shopify-schema-audit
-description: Use when auditing a Shopify Liquid theme for structured data quality - checks JSON-LD schema completeness, product structured data, metafield exposure, and store configuration. Triggers on Shopify theme projects, SEO audits, schema markup review, or pre-deployment validation.
-version: 1.1.0
+description: Use when auditing a Shopify Liquid theme for structured data quality - checks JSON-LD schema completeness (Product, AggregateRating, FAQ, Organization, BreadcrumbList, MerchantReturnPolicy), Open Graph meta tags, product metadata, and store configuration. Triggers on Shopify theme projects, SEO audits, schema markup review, AI search visibility reviews, or pre-deployment validation.
+version: 1.2.0
 author: Yan Pantoja
 tags:
   - shopify
@@ -10,11 +10,12 @@ tags:
   - json-ld
   - schema-markup
   - rich-results
+  - open-graph
 ---
 
 # Shopify Schema Audit
 
-Structured audit workflow for **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0 themes, etc.). Validates JSON-LD structured data, product metadata, and store configuration for SEO rich results and AI search visibility.
+Structured audit workflow for **Shopify Liquid themes** (Dawn, Horizon, custom OS 2.0 themes, etc.). Validates JSON-LD structured data, Open Graph meta tags, product metadata, and store configuration for SEO rich results and AI search visibility.
 
 ## When to Use
 
@@ -56,18 +57,27 @@ Map every JSON-LD implementation in the theme.
 3. Check which templates include each file (grep for `render` or `include` of the filename)
 4. Build coverage matrix using the template in [templates/report-template.md](templates/report-template.md)
 
-## Phase 2: Schema Validation
+## Phase 2: Schema & Meta Validation
 
-For each JSON-LD block found in Phase 1, run the relevant checks:
+Validates all structured signals AI agents and search crawlers use to understand the page — primarily JSON-LD, plus Open Graph tags as a parallel signal used when JSON-LD is incomplete or absent.
+
+### JSON-LD structured data
+
+For each block found in Phase 1, run the relevant checks:
 
 - **Product / ProductGroup** (checks 1-9): See [references/product-schema-checks.md](references/product-schema-checks.md)
 - **AggregateRating** (checks 10-13): See [references/rating-checks.md](references/rating-checks.md)
 - **FAQPage** (checks 14-18): See [references/faq-checks.md](references/faq-checks.md)
-- **Organization & BreadcrumbList** (checks 19-23): See [references/organization-checks.md](references/organization-checks.md)
+- **Organization & BreadcrumbList** (checks 19-23c): See [references/organization-checks.md](references/organization-checks.md)
+- **MerchantReturnPolicy** (checks 39-42): See [references/returns-checks.md](references/returns-checks.md)
 - **Global checks for all blocks** (checks 24-29): See [references/global-checks.md](references/global-checks.md)
 - **Conflict detection** (checks 29a-29c): Also in [references/global-checks.md](references/global-checks.md) — checks for duplicate schema from SEO apps, microdata/JSON-LD mixing, and native `structured_data` filter reliance
 
-Only load the reference files relevant to schemas found in Phase 1.
+### Open Graph meta tags
+
+- **Open Graph tags** (checks 43-47): See [references/open-graph-checks.md](references/open-graph-checks.md)
+
+Only load the reference files relevant to what Phase 1 found or what the current audit is focused on.
 
 ## Phase 3: Store Readiness
 
